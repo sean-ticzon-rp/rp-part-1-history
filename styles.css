@@ -27,47 +27,51 @@
     color: #E8F4F8;
 }
 
-.logo-container {
-    width: 500px;
-    height: 500px;
-    background: #67bed9;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    animation: logoGlow 3s ease-in-out infinite;
+/* Logo Animations */
+.company-intro img {
+    animation: logoEntrance 1.5s ease-out forwards, logoFloat 3s ease-in-out 1.5s infinite;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes logoGlow {
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    60% {
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes logoFloat {
     0%, 100% {
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 20px rgba(103, 190, 217, 0.5);
+        transform: translateY(0px);
     }
     50% {
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 40px rgba(103, 190, 217, 0.8), 0 0 60px rgba(103, 190, 217, 0.4);
+        transform: translateY(-20px);
     }
 }
 
-.logo-container:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+.company-intro img:hover {
+    animation: logoSpin 0.8s ease-in-out;
+    cursor: pointer;
 }
 
-.logo-container img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+@keyframes logoSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
 }
-
-.rocket-animation span {
-    display: inline-block;
-    animation: float 2s ease-in-out infinite;
-}
-
-/* Remove rocket animation styles - no longer needed */
 
 /* Typography */
 .slide-h2 {
