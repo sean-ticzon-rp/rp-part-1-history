@@ -47,9 +47,22 @@ createApp({
                     this.nextSlide();
                 }
             }
+        },
+        checkURLForSlide() {
+            // Check if there's a slide parameter in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const slideParam = urlParams.get('slide');
+            if (slideParam !== null) {
+                const slideNum = parseInt(slideParam);
+                if (slideNum >= 0 && slideNum < this.totalSlides) {
+                    this.currentSlide = slideNum;
+                }
+            }
         }
     },
     mounted() {
+        // Check URL for slide parameter on load
+        this.checkURLForSlide();
         // Add keyboard navigation
         window.addEventListener('keydown', this.handleKeydown);
     },

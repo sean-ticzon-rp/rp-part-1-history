@@ -23,7 +23,8 @@ createApp({
             }
         },
         goToPreviousPart() {
-            window.location.href = 'index.html';
+            // Go to last slide of Part 1 (slide 11, which is index 11)
+            window.location.href = 'index.html?slide=11';
         },
         selectColor(color) {
             this.selectedColor = color;

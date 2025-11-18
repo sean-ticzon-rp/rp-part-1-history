@@ -28,14 +28,14 @@
 }
 
 .logo-container {
-    width: 900px;
-    height: 280px;
+    width: 500px;
+    height: 500px;
     background: #67bed9;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 40px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     animation: logoGlow 3s ease-in-out infinite;
 }
@@ -62,19 +62,12 @@
     object-fit: contain;
 }
 
-.rocket-animation {
-    margin-top: 20px;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
 .rocket-animation span {
     display: inline-block;
     animation: float 2s ease-in-out infinite;
 }
+
+/* Remove rocket animation styles - no longer needed */
 
 /* Typography */
 .slide-h2 {
