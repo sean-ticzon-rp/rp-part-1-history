@@ -1,0 +1,252 @@
+/* Base Slide Styles */
+.slide {
+    padding: 90px 110px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #FEFEFE 0%, #F8FAFB 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Company Intro Slide */
+.company-intro {
+    background: linear-gradient(135deg, #1E3A5F 0%, #3A6EA5 100%);
+    color: white;
+}
+
+.company-intro h1 {
+    color: white;
+}
+
+.company-intro p {
+    color: #E8F4F8;
+}
+
+.logo-container {
+    width: 900px;
+    height: 280px;
+    background: #67bed9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 20px rgba(103, 190, 217, 0.5);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 40px rgba(103, 190, 217, 0.8), 0 0 60px rgba(103, 190, 217, 0.4);
+    }
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.logo-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.rocket-animation {
+    margin-top: 20px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.rocket-animation span {
+    display: inline-block;
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Typography */
+.slide-h2 {
+    color: #2C5282;
+    font-size: 47px;
+    margin-bottom: 25px;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.slide-h3 {
+    color: #3A6EA5;
+    font-size: 37px;
+    margin-bottom: 15px;
+    margin-top: 18px;
+    font-weight: 600;
+}
+
+.slide-text {
+    font-size: 29px;
+    line-height: 1.5;
+    color: #2D3748;
+    margin-bottom: 10px;
+}
+
+.slide-list {
+    margin-left: 35px;
+    margin-bottom: 18px;
+}
+
+.slide-list li {
+    font-size: 29px;
+    line-height: 1.5;
+    color: #2D3748;
+    margin-bottom: 10px;
+}
+
+/* Highlight Boxes */
+.highlight-box {
+    background: #E6F3FF;
+    padding: 20px;
+    border-left: 4px solid #4A90E2;
+    margin: 18px 0;
+    border-radius: 8px;
+}
+
+.stat-box {
+    background: #F0F9FF;
+    padding: 18px;
+    border-radius: 10px;
+    margin: 12px 0;
+    border-left: 4px solid #5B9BD5;
+}
+
+/* Title Slide */
+.title-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #E8F4F8 0%, #D4E9F5 100%);
+}
+
+/* Interactive Elements */
+.color-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 5px solid transparent;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.color-box.selected {
+    border: 5px solid #3A6EA5;
+    transform: scale(1.1);
+}
+
+.ide-box {
+    width: 200px;
+    height: 200px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 5px solid transparent;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ide-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.ide-box.selected {
+    border: 5px solid #3A6EA5;
+    transform: scale(1.05);
+}
+
+.option-btn {
+    padding: 20px 40px;
+    background: white;
+    color: #2D3748;
+    border: 3px solid #5B9BD5;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Lexend', sans-serif;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.option-btn:hover {
+    background: #5B9BD5;
+    color: white;
+    transform: scale(1.05);
+}
+
+.option-btn.selected {
+    background: #3A6EA5;
+    color: white;
+    border-color: #3A6EA5;
+    transform: scale(1.05);
+}
+
+/* Navigation Button */
+.nav-button {
+    padding: 15px 30px;
+    background: #3A6EA5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.nav-button:hover {
+    background: #2C5282;
+}
+
+.nav-button:disabled {
+    background: #B8C5D0;
+    cursor: not-allowed;
+}
+
+/* Vue Transitions */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    opacity: 0;
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+    opacity: 1;
+}

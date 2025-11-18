@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point of Sale Phase 1 - Part 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-['Lexend'] bg-[#E8F4F8] flex justify-center items-center min-h-screen p-8">
+    <div id="app" class="w-full max-w-[1920px] min-h-[1080px] bg-white rounded-[10px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden relative">
+        
+        <!-- Slide 0: Important Principles -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 0" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">Important Principles</h2>
+                <div class="highlight-box text-[32px] animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">
+                    <p><strong>1. Prepare Lift PCs for bad network conditions</strong></p>
+                </div>
+                <div class="highlight-box text-[32px] animate__animated animate__fadeInRight" style="animation-delay: 0.6s">
+                    <p><strong>2. Lift can ONLY inject barcodes</strong></p>
+                    <ul class="slide-list mt-2 text-[30px]">
+                        <li>No voiding transactions</li>
+                        <li>No fancy features</li>
+                        <li>Focus all expectations on this interaction</li>
+                    </ul>
+                </div>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInDown" style="animation-delay: 0.9s">Three Ways to Inject Barcodes</h3>
+                <ol class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 1.1s">Inject loyalty barcode</li>
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 1.3s">Inject UPC</li>
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 1.5s">Inject discount</li>
+                </ol>
+            </div>
+        </transition>
+
+        <!-- Slide 1: Discount Mechanisms -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 1" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">Discount Mechanisms</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">Method 1: Negative Price UPC</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.5s">Can lead to cashier theft by spamming the code</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.7s">Evergreen entries that always work as generic codes</li>
+                </ul>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 0.9s">Method 2: Zero Price UPC to Trigger Price Rule</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.1s">PoS has API to loyalty host</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.3s">Can discount lines</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.5s">Can't add items</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.7s">Only interacted with at end of transaction</li>
+                </ul>
+            </div>
+        </transition>
+
+        <!-- Slide 2: Price Rules -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 2" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__bounceIn">Price Rules 101</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInDown" style="animation-delay: 0.3s">Types of Promotions</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.5s">Promotions</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.7s">Combos</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.9s">Mix & Match</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.1s">BOGOs (Buy One Get One)</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.3s">Variations on BOGOs</li>
+                </ul>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInDown" style="animation-delay: 1.5s">US Retail Standard: Conexxus</h3>
+                <p class="slide-text text-[30px] animate__animated animate__fadeIn" style="animation-delay: 1.7s">Defines how back office & PoS store & send data:</p>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.9s">Pricebook</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 2.1s">Gas sales & prices</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 2.3s">Loyalty</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 2.5s">Discounts</li>
+                </ul>
+            </div>
+        </transition>
+
+        <!-- Ice Breaker 1: Best Programming Language -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 3" class="slide title-slide">
+                <h2 class="mb-10 text-[#1E3A5F] text-[60px] animate__animated animate__bounceIn">⚡ Ice Breaker: Best Language?</h2>
+                <p class="text-[38px] animate__animated animate__fadeIn animate__delay-1s">What's your favorite programming language?</p>
+                <div class="flex gap-8 mt-8 flex-wrap justify-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <button @click="selectLanguage('Java')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Java' ? 'selected' : '']">Java</button>
+                    <button @click="selectLanguage('Python')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Python' ? 'selected' : '']">Python</button>
+                    <button @click="selectLanguage('JavaScript')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'JavaScript' ? 'selected' : '']">JavaScript</button>
+                    <button @click="selectLanguage('C++')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'C++' ? 'selected' : '']">C++</button>
+                    <button @click="selectLanguage('Go')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Go' ? 'selected' : '']">Go</button>
+                    <button @click="selectLanguage('Rust')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Rust' ? 'selected' : '']">Rust</button>
+                </div>
+            </div>
+        </transition>
+
+        <!-- Slide 4: Combo Item Lists -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 4" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">Combo Item Lists</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">Structure</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.5s">Qty X Item A… Item Z</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.7s">Qty Y item AA … Item ZZ</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.9s">N combinations of quantities and item lists</li>
+                </ul>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 1.1s">Contains</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.3s">New Total</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.5s">Discount amount</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.7s">Discount %</li>
+                </ul>
+                <div class="highlight-box text-[32px] animate__animated animate__pulse" style="animation-delay: 1.9s">
+                    <p><strong>Important:</strong> Once an item participates in a combo, it is not eligible for another combo</p>
+                </div>
+            </div>
+        </transition>
+
+        <!-- Slide 5: Algorithms -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 5" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">Algorithm Considerations</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">Greedy vs Knapsack</h3>
+                <p class="slide-text text-[32px] animate__animated animate__fadeIn" style="animation-delay: 0.5s">Naive greedy algorithm: Take most valuable coupon from list first</p>
+                <p class="slide-text text-[32px] animate__animated animate__fadeIn" style="animation-delay: 0.7s"><strong>Problem:</strong> Greedy algorithm isn't always the most efficient</p>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInRight" style="animation-delay: 0.9s">Combo Setup Options</h3>
+                <ul class="slide-list text-[30px]">
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.1s">Qty 2 for each coke to discount price</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.3s">Qty 1 for each coke as two lines to discount price</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.5s">Qty 2 for each coke with negative price for discount vs absolute sale price</li>
+                </ul>
+                <p class="mt-5 italic text-[28px] animate__animated animate__fadeIn" style="animation-delay: 1.7s">BOGO expressed as discount vs price change can affect eligibility for other discounts</p>
+            </div>
+        </transition>
+
+        <!-- Slide 6: Triggers -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 6" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__bounceIn">Triggers & Completers</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInDown" style="animation-delay: 0.3s">Concept</h3>
+                <p class="slide-text text-[34px] animate__animated animate__fadeIn" style="animation-delay: 0.5s">Create promotional chains based on customer purchases</p>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInDown" style="animation-delay: 0.7s">Examples</h3>
+                <div class="stat-box text-[34px] animate__animated animate__zoomIn" style="animation-delay: 0.9s">
+                    <p><strong>When Coke is added → Show chips ad</strong></p>
+                </div>
+                <div class="stat-box text-[34px] animate__animated animate__zoomIn" style="animation-delay: 1.2s">
+                    <p><strong>When chips are added → Show Coke ad</strong></p>
+                </div>
+                <p class="mt-[30px] text-[32px] animate__animated animate__fadeIn" style="animation-delay: 1.5s">This creates a seamless upselling experience that feels natural to the customer</p>
+            </div>
+        </transition>
+
+        <!-- Slide 7: Summary -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 7" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">Key Takeaways</h2>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.2s">Lift improves convenience store sales by <strong>5%+</strong></li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.4s">Lift can <strong>only inject barcodes</strong> into PoS systems</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 0.6s">Scanner splitter technology enables dual-reading</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 0.8s">System uses <strong>AWS Redshift, MySQL, and Elasticsearch</strong></li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1s">Price rules and combos require careful algorithm design</li>
+                    <li class="animate__animated animate__fadeInRight" style="animation-delay: 1.2s">Triggers & completers create natural upselling flows</li>
+                    <li class="animate__animated animate__fadeInLeft" style="animation-delay: 1.4s">Always prepare for <strong>bad network conditions</strong></li>
+                </ul>
+            </div>
+        </transition>
+
+        <!-- Ice Breaker 2: Preferred AI Model -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 8" class="slide title-slide">
+                <h2 class="mb-10 text-[#1E3A5F] text-[60px] animate__animated animate__bounceIn">🤖 Ice Breaker: Your AI Companion?</h2>
+                <p class="text-[38px] animate__animated animate__fadeIn animate__delay-1s">Which AI model do you prefer?</p>
+                <div class="flex gap-8 mt-8 flex-wrap justify-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <button @click="selectAI('ChatGPT')" :class="['option-btn', 'text-[32px]', selectedAI === 'ChatGPT' ? 'selected' : '']">ChatGPT</button>
+                    <button @click="selectAI('Claude')" :class="['option-btn', 'text-[32px]', selectedAI === 'Claude' ? 'selected' : '']">Claude</button>
+                    <button @click="selectAI('Gemini')" :class="['option-btn', 'text-[32px]', selectedAI === 'Gemini' ? 'selected' : '']">Gemini</button>
+                    <button @click="selectAI('Copilot')" :class="['option-btn', 'text-[32px]', selectedAI === 'Copilot' ? 'selected' : '']">Copilot</button>
+                    <button @click="selectAI('Other')" :class="['option-btn', 'text-[32px]', selectedAI === 'Other' ? 'selected' : '']">Other</button>
+                </div>
+            </div>
+        </transition>
+
+        <!-- Slide 9: Questions Before Task -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 9" class="slide title-slide">
+                <h1 class="text-[#1E3A5F] text-[80px] font-bold animate__animated animate__bounceIn">Any Questions?</h1>
+                <p class="mt-10 text-[36px] animate__animated animate__fadeIn animate__delay-1s">Before we move to the hands-on task</p>
+            </div>
+        </transition>
+
+        <!-- Slide 10: Task -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 10" class="slide">
+                <h2 class="slide-h2 text-[55px] animate__animated animate__fadeInDown">TASK: Build a Basic Mock Register</h2>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInLeft" style="animation-delay: 0.3s">Using Java Swing</h3>
+                <h3 class="slide-h3 text-[42px] animate__animated animate__fadeInRight" style="animation-delay: 0.5s">Minimum Requirements:</h3>
+                <ul class="slide-list text-[32px]">
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 0.7s"><strong>Parse pricebook</strong> - Store in HashMap or H2 DB</li>
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 0.9s"><strong>Scan gun</strong> - Scan UPC and find item in pricebook</li>
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 1.1s"><strong>Virtual journal</strong> (writes to IDE console)
+                        <ul class="ml-[35px] mt-2 text-[28px]">
+                            <li>Note event source (scan gun)</li>
+                            <li>Include: item description, price, UPC/Code</li>
+                        </ul>
+                    </li>
+                    <li class="animate__animated animate__fadeInUp" style="animation-delay: 1.3s"><strong>Running item display & total</strong> on cashier display</li>
+                </ul>
+            </div>
+        </transition>
+
+        <!-- Slide 11: Final Questions -->
+        <transition name="slide-fade">
+            <div v-if="currentSlide === 11" class="slide title-slide">
+                <h1 class="text-[#1E3A5F] text-[80px] font-bold animate__animated animate__bounceIn">Questions?</h1>
+                <p class="mt-10 text-[36px] animate__animated animate__fadeIn animate__delay-1s">Point of Sale Phase 1 Training</p>
+            </div>
+        </transition>
+
+        <!-- Navigation -->
+        <div class="absolute bottom-5 left-5 text-[#3A6EA5] text-[24px] font-semibold z-[100]">
+            Part 2: {{ currentSlide + 1 }} / {{ totalSlides }}
+        </div>
+        
+        <div class="absolute bottom-[30px] right-[30px] flex gap-4 z-[100]">
+            <button v-if="currentSlide === 0" @click="goToPreviousPart" class="nav-button text-[28px]">← Previous (Part 1)</button>
+            <button v-else @click="prevSlide" class="nav-button text-[28px]">← Previous</button>
+            <button @click="nextSlide" :disabled="currentSlide === totalSlides - 1" class="nav-button text-[28px]">Next →</button>
+        </div>
+    </div>
+
+    <script src="app2.js"></script>
+</body>
+</html>
