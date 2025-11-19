@@ -27,50 +27,8 @@
     color: #E8F4F8;
 }
 
-/* Logo Animations */
 .company-intro img {
-    animation: logoEntrance 1.5s ease-out forwards, logoFloat 3s ease-in-out 1.5s infinite;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-}
-
-@keyframes logoEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
-    }
-    60% {
-        transform: scale(1.1) rotate(5deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-@keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.company-intro img:hover {
-    animation: logoSpin 0.8s ease-in-out;
-    cursor: pointer;
-}
-
-@keyframes logoSpin {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
 }
 
 /* Typography */
@@ -178,6 +136,33 @@
 }
 
 .ide-box.selected {
+    border: 5px solid #3A6EA5;
+    transform: scale(1.05);
+}
+
+/* Language boxes - same styling as IDE boxes */
+.lang-box {
+    width: 200px;
+    height: 200px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 5px solid transparent;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.lang-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.lang-box.selected {
     border: 5px solid #3A6EA5;
     transform: scale(1.05);
 }

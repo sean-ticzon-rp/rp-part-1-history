@@ -86,12 +86,34 @@
                 <h2 class="mb-10 text-[#1E3A5F] text-[60px] animate__animated animate__bounceIn">⚡ Ice Breaker: Best Language?</h2>
                 <p class="text-[38px] animate__animated animate__fadeIn animate__delay-1s">What's your favorite programming language?</p>
                 <div class="flex gap-8 mt-8 flex-wrap justify-center animate__animated animate__fadeInUp animate__delay-2s">
-                    <button @click="selectLanguage('Java')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Java' ? 'selected' : '']">Java</button>
-                    <button @click="selectLanguage('Python')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Python' ? 'selected' : '']">Python</button>
-                    <button @click="selectLanguage('JavaScript')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'JavaScript' ? 'selected' : '']">JavaScript</button>
-                    <button @click="selectLanguage('C++')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'C++' ? 'selected' : '']">C++</button>
-                    <button @click="selectLanguage('Go')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Go' ? 'selected' : '']">Go</button>
-                    <button @click="selectLanguage('Rust')" :class="['option-btn', 'text-[32px]', selectedLanguage === 'Rust' ? 'selected' : '']">Rust</button>
+                    <div @click="selectLanguage('Java')" :class="['lang-box', selectedLanguage === 'Java' ? 'selected' : '']">
+                        <img src="java.png" alt="Java" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">Java</div>
+                    </div>
+                    <div @click="selectLanguage('Python')" :class="['lang-box', selectedLanguage === 'Python' ? 'selected' : '']">
+                        <img src="python.png" alt="Python" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">Python</div>
+                    </div>
+                    <div @click="selectLanguage('JavaScript')" :class="['lang-box', selectedLanguage === 'JavaScript' ? 'selected' : '']">
+                        <img src="js.png" alt="JavaScript" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">JavaScript</div>
+                    </div>
+                    <div @click="selectLanguage('C++')" :class="['lang-box', selectedLanguage === 'C++' ? 'selected' : '']">
+                        <img src="c++.png" alt="C++" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">C++</div>
+                    </div>
+                    <div @click="selectLanguage('Go')" :class="['lang-box', selectedLanguage === 'Go' ? 'selected' : '']">
+                        <img src="go.png" alt="Go" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">Go</div>
+                    </div>
+                    <div @click="selectLanguage('Rust')" :class="['lang-box', selectedLanguage === 'Rust' ? 'selected' : '']">
+                        <img src="rust.png" alt="Rust" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">Rust</div>
+                    </div>
+                    <div @click="selectLanguage('PHP')" :class="['lang-box', selectedLanguage === 'PHP' ? 'selected' : '']">
+                        <img src="php.png" alt="PHP" class="w-[100px] h-[100px] mb-4 object-contain">
+                        <div class="text-3xl font-semibold text-[#2D3748]">PHP</div>
+                    </div>
                 </div>
             </div>
         </transition>

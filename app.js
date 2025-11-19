@@ -8,22 +8,51 @@ createApp({
             selectedColor: null,
             selectedIDE: null,
             selectedLanguage: null,
-            selectedAI: null
+            selectedAI: null,
+            audio: null,
+            iceBreakerSlides: [6, 11] // Slides with ice breakers
         }
     },
     methods: {
         nextSlide() {
             if (this.currentSlide < this.totalSlides - 1) {
                 this.currentSlide++;
+                this.handleAudio();
             }
         },
         prevSlide() {
             if (this.currentSlide > 0) {
                 this.currentSlide--;
+                this.handleAudio();
             }
         },
         goToNextPart() {
+            this.stopAudio();
             window.location.href = 'index2.html';
+        },
+        handleAudio() {
+            // Check if current slide is an ice breaker
+            if (this.iceBreakerSlides.includes(this.currentSlide)) {
+                this.playAudio();
+            } else {
+                this.stopAudio();
+            }
+        },
+        playAudio() {
+            if (!this.audio) {
+                this.audio = new Audio('song.mp3');
+                this.audio.loop = true; // Loop the music while on ice breaker slide
+                this.audio.volume = 0.3; // Set volume to 30% (not too loud)
+            }
+            this.audio.play().catch(error => {
+                console.log('Audio play failed:', error);
+            });
+        },
+        stopAudio() {
+            if (this.audio) {
+                this.audio.pause();
+                this.audio.currentTime = 0; // Reset to beginning
+            }
         },
         selectColor(color) {
             this.selectedColor = color;
@@ -56,6 +85,7 @@ createApp({
                 const slideNum = parseInt(slideParam);
                 if (slideNum >= 0 && slideNum < this.totalSlides) {
                     this.currentSlide = slideNum;
+                    this.handleAudio(); // Check audio on initial load
                 }
             }
         }
@@ -67,7 +97,8 @@ createApp({
         window.addEventListener('keydown', this.handleKeydown);
     },
     beforeUnmount() {
-        // Clean up event listener
+        // Clean up
+        this.stopAudio();
         window.removeEventListener('keydown', this.handleKeydown);
     }
 }).mount('#app');
